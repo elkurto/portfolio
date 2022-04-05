@@ -9,4 +9,10 @@
 ## 2. [Firework Display](https://elkurto.github.io/portfolio/root/static/firework.html)
   - Tap or Click the black canvas to generate firework animations.
   - Change the color, gravity, spark density of fireworks via custom controls or select from stereotypical firework presets.
-  
+
+## 3. [Momentum Simulation](https://elkurto.github.io/portfolio/root/static/sim-momentum.html)
+  - Discreet Event Simulation of collision between 13 balls.
+  - This program exhibit a use of physics (KE, angle of collision, momentum) and a discreet event simluation.
+  - Click the start/stop buttons to run and pause the simuation respectively.
+  - Click the step button to advance the simulation by 20 milliseconds and then pause again.
+
