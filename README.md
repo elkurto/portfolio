@@ -16,3 +16,8 @@
   - Click the start/stop buttons to run and pause the simuation respectively.
   - Click the step button to advance the simulation by 20 milliseconds and then pause again.
 
+## 4. [Modern CSS Layouts](https://elkurto.github.io/portfolio/root/static/modern-layout.html)
+  - A heuristic demonstration of modern CSS layouts.
+  - The page focuses on usage of Grid Layouts and Flex Layouts to achieve responsive web design (RWD).
+  - The page annotates and isolates key CSS and HTML code in the page&apos;s tabbed code blocks. 
+

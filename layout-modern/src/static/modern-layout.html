@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta lang="en"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>modern-layout.html</title>
+  <link href="css/modern-layout.css" type="text/css" rel="stylesheet"/>
+  <style type="text/css">
+
+  </style>
+</head>
+<body>
+  <script type="text/javascript">
+    function StringBuilder(s) {
+      this.ary =new Array();
+      this.append( s ) ; 
+    };
+    StringBuilder.prototype.append =function(s ) {
+      if ( s ) {
+        this.ary.push( s );
+      }
+      return this;
+    };
+    StringBuilder.prototype.clear =function(s ) {
+      this.ary =[];
+    };
+    StringBuilder.prototype.toString =function(s ) {
+      return this.ary.join('');
+    };
+
+    var map_c_to_translation =new Map();
+    map_c_to_translation.set('&','&amp;');
+    map_c_to_translation.set('>','&gt;');
+    map_c_to_translation.set('<','&lt;');
+    map_c_to_translation.set('"','&quot;');
+    map_c_to_translation.set('\'','&apos;');
+    function escapeHtml( s ) {
+      /** 
+       *  @desc   re-encode chars (&><"') with thier XML_equivalents.
+       *  @param  :String:s
+       *  @return :String:s_escaped - a copy of :param:s with [&><"'] 
+       *                              replaced with [&amp;&gt;&lt;&quot;&apos;]
+       */
+      var sb =new StringBuilder();
+      for ( var i =0; i < s.length; i++) {
+        var c =s[i];
+        if ( map_c_to_translation.has( c ) ) {
+            sb.append( map_c_to_translation.get(c) );
+        }else {
+            sb.append(s[i]);
+        }
+        
+      }//end-for-i
+      return sb.toString();
+    };
+
+    function select_active_tab( button, list_button, text, odom_code ) {
+      for ( var i =0; i < list_button.length; i++ ) {
+        list_button[i].classList.remove('active');
+      }
+      button.classList.add('active');
+      odom_code.innerHTML =text;
+    };
+
+    var fn_init_tabbox =function( selector_code_tab, list_content, idx_select ) {
+        var holder =document.querySelector(selector_code_tab);
+        var list_button =holder.querySelectorAll('button');
+        var odom_code =holder.querySelector('div.section-tab-content');
+        
+        for ( var i =0; i < list_content.length && i < list_button.length; i++ ) {
+          var button =list_button[i];
+          button.onclick =select_active_tab.bind( null, button, list_button, list_content[i], odom_code);
+        }
+        try {
+          list_button[idx_select].click();
+        }catch(ex) {}
+      };    
+  </script>
+
+
+<banner>
+<h1>Sample Grid And Flex Layouts For  Components </h1>
+<h2>Responsive Web Design</h2>
+<citation>This page continues the awesome the lesson; <a href="https://1linelayouts.glitch.me/">https://1linelayouts.glitch.me/</a> </citation>
+<br/>
+<citation>And continues Mozilla's formal documentation; <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Basic_Concepts_of_Grid_Layout">https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Basic_Concepts_of_Grid_Layout</a></citation>
+</banner>
+
+<!-- 
+   01 SECTION 01
+   01 SECTION 01 
+   01 SECTION 01 
+-->
+  <section data-desc="section 01">
+    <div class="section-holder-meta">
+      <div class="section-meta-title">01. Parent centers children vertically and horizontally. </div>
+      <div class="section-meta-goal">
+        Goal: Parent DIV centers child elements.  Works with resizeable parent.
+      </div>
+      <div class="codebox" style="width:700px">
+        <code class="section-meta-css">
+  .grid-3col-centered { 
+    display: grid;                         /* use a grid layout */
+    grid-template-columns: auto auto auto; /* 3 col - auto distribute col_width */
+    place-items:center;                    /* center vertically and horizontally*/
+  }
+        </code>
+      </div>
+    </div>
+    <div class="section-holder-example">
+      <div class="section-example">
+        <div class="wrapper-resize">
+        <div id="parent01" class="grid-3col-centered light-blue">
+          <div>child 1</div>
+          <div>:-] 2</div>
+          <div>child 3</div>
+          <div>child 4</div>
+          <div>&#x2764; 5</div>
+          <div>child 6</div>
+        </div>
+        </div>
+        <div id="section-holder-code-tab-01" class="section-holder-code-tab h400">
+          <button class="section-tab">HTML</button>
+          <button class="section-tab">CSS</button>
+          <div class="section-tab-content code" style="width:400px">
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      var fn_init_tabbox01 =function() {
+
+        var text_html =`
+<div id="parent01" class="grid-3col-centered light-blue">
+  <div>child 1</div>
+  <div>:-] 2</div>
+  <div>child 3</div>
+  <div>child 4</div>
+  <div>&#x2764; 5</div>
+  <div>child 6</div>
+</div>`;
+        var text_css =`
+#parent01 {
+  position:relative;
+  z-index: 2;
+  width:100%;
+  height:100%;
+}
+
+.grid-3col-centered {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  place-items:center;
+}
+
+#parent01 div {
+  background-color: navy;
+  padding: 5px;
+  border-radius: 0.5rem;
+}
+`;        
+        var selector_code_tab ='#section-holder-code-tab-01';
+        var list_content =[escapeHtml(text_html),escapeHtml(text_css)];
+        var idx_active =1;
+        fn_init_tabbox(selector_code_tab, list_content, idx_active);
+      };
+      
+      fn_init_tabbox01();
+    </script>
+  </section>
+
+  
+
+
+  
+
+
+<!-- 
+   02 SECTION 02 
+   02 SECTION 02 
+   02 SECTION 02 
+-->
+  <section data-desc="section 02">
+    <div class="section-holder-meta">
+      <div class="section-meta-title">02. Super center (single item). </div>
+      <div class="section-meta-goal">
+        Goal: Parent DIV centers one child element.  Works with resizeable parent.
+      </div>
+      <div class="codebox" style="width:700px">
+        <code class="section-meta-css">
+  .super-centered { 
+    display: grid;                         /* use a grid layout */
+    place-items:center;                    /* center vertically and horizontally*/
+    /* grid-template-columns: auto; // applied by default */
+  }
+        </code>
+      </div>
+    </div>
+    <div class="section-holder-example">
+      <div class="section-example minh450">
+        <div class="wrapper-resize">
+          <div id="parent02" class="super-centered light-blue">
+            <div>child 1</div>
+          </div>
+        </div>
+        <div id="section-holder-code-tab-02" class="section-holder-code-tab">
+          <button class="section-tab">HTML</button>
+          <button class="section-tab">CSS</button>
+          <div class="section-tab-content code w450 h400">
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+
+
+      var fn_init_tabbox02 =function() {
+
+
+        var text_html ='<div id="parent02" class="supercentered light-blue">' +'\n'
+                      +'  <div>child 1</div>' +'\n'
+                      +'</div>';
+        var text_css =`#parent02 {
+  position:relative;
+  z-index: 2;
+  width:100%;
+  height:100%;
+}
+
+.super-centered {
+  display: grid;
+  place-items:center;
+  /* grid-template-columns: auto; // applied by default */
+}
+
+#parent02 div {
+  background-color: navy;
+  padding: 5px;
+  border-radius: 0.5rem;
+}`;
+        
+        var list_content = [escapeHtml(text_html), escapeHtml(text_css ) ];
+        var selector_code_tab ='#section-holder-code-tab-02';
+        var idx_select =1;
+        fn_init_tabbox(selector_code_tab, list_content, idx_select);
+      };//end-fn_init_tabbox02
+      fn_init_tabbox02();
+    </script>
+  </section> 
+  
+
+
+
+  
+
+<!-- 
+   03 SECTION 03 
+   03 SECTION 03 
+   03 SECTION 03 
+-->
+<section data-desc="section 03">
+  <div class="section-holder-meta">
+    <div class="section-meta-title">03. Flex Layout (with stretchy children) </div>
+    <div class="section-meta-goal">
+      Goal: Configure child-elements to be responsive and automatically resize.
+    </div>
+    <div class="codebox w700">
+      <code class="section-meta-css">
+.flex-with-strechy-children {
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  
+}
+
+.flex-with-strechy-children div {
+  flex: 1 1 110px;   /* flex-grow flex-shrink flex-basis */
+  margin: 5px;
+}
+      </code>
+    </div>
+  </div>
+  <div class="section-holder-example">
+    <div class="section-example h400 ">
+      <div class="minw140 wrapper-resize">
+        <div id="parent03" class="flex-with-strechy-children light-blue">
+          <div >child 1</div>
+          <div >child 2</div>
+          <div >child 3</div>
+        </div>
+      </div>
+      <div id="section-holder-code-tab-03" class="section-holder-code-tab">
+        <button class="section-tab">HTML</button>
+        <button class="section-tab">CSS</button>
+        <div class="section-tab-content code w450 h400">
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+
+var text_html =`<div id="parent03" class="flex-with-strechy-children">
+  <div class="stretchy-child">child 1</div>
+  <div class="stretchy-child">child 2</div>
+  <div class="stretchy-child">child 3</div>
+</div>`;
+var text_css =`#parent03 {
+  position:relative;
+  z-index:2;
+  width:100%;
+  height:100%;
+}
+
+.flex-with-strechy-children {
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  
+}
+
+.flex-with-strechy-children div {
+  flex: 1 1 110px; /* flex-grow flex-shrink flex-basis */
+  margin: 5px;
+
+  background-color: navy;
+  padding: 5px;
+  border-radius: 0.5rem;
+}`;
+
+    var fn_init_tabbox03 =function() {
+      
+      var list_content = [escapeHtml(text_html), escapeHtml(text_css ) ];
+      var selector_code_tab ='#section-holder-code-tab-03';
+      var idx_select =1;
+      fn_init_tabbox(selector_code_tab, list_content, idx_select);
+    };
+    fn_init_tabbox03();
+  </script>
+</section>    
+
+
+
+
+
+
+
+<!-- 
+   04 SECTION 04 
+   04 SECTION 04 
+   04 SECTION 04 
+-->
+<section data-desc="section 04">
+  <div class="section-holder-meta">
+    <div class="section-meta-title">04. Flex Layout (without stretchy children) </div>
+    <div class="section-meta-goal">
+      Goal: Configure child-elements to be responsive and automatically resize.
+    </div>
+    <div class="codebox w700">
+      <code class="section-meta-css">
+.flex-with-strechy-children {
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.flex-with-strechy-children div {
+  flex: 0 1 110px; /* flex-grow flex-shrink flex-basis */
+  margin: 5px;
+}
+      </code>
+    </div>
+  </div>
+  <div class="section-holder-example">
+    <div class="section-example h400">
+      <div class="minw140 wrapper-resize">
+        <div id="parent04" class="flex-with-children-that-shrink-only light-blue">
+          <div >child 1</div>
+          <div >child 2</div>
+          <div >child 3</div>
+        </div>
+      </div>
+      <div id="section-holder-code-tab-04" class="section-holder-code-tab">
+        <button class="section-tab">HTML</button>
+        <button class="section-tab">CSS</button>
+        <div class="section-tab-content code w450 h400">
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+
+var text_html =`<div id="parent04" class="flex-with-strechy-children">
+  <div class="stretchy-child">child 1</div>
+  <div class="stretchy-child">child 2</div>
+  <div class="stretchy-child">child 3</div>
+</div>`;
+var text_css =`#parent04 {
+  position:relative;
+  z-index:2;
+  width:100%;
+  height:100%;
+}
+
+.flex-with-children-that-shrink-only {
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.flex-with-children-that-shrink-only div {
+  flex: 0 1 110px; /* flex-grow flex-shrink flex-basis */
+  margin: 5px;
+
+  background-color: navy;
+  padding: 5px;
+  border-radius: 0.5rem;
+}`;
+
+    var fn_init_tabbox04 =function() {
+      
+      var list_content = [escapeHtml(text_html), escapeHtml(text_css ) ];
+      var selector_code_tab ='#section-holder-code-tab-04';
+      var idx_select =1;
+      fn_init_tabbox(selector_code_tab, list_content, idx_select);
+    };
+    fn_init_tabbox04();
+  </script>
+</section>    
+
+
+
+
+
+
+
+<!-- 
+   05 SECTION 05 
+   05 SECTION 05 
+   05 SECTION 05 
+-->
+<section data-desc="section 05">
+  <div class="section-holder-meta">
+    <div class="section-meta-title">05. Grid Repeat (equal cells - cells float left) </div>
+    <div class="section-meta-goal">
+      Goal: Configure child-elements to be responsive and automatically resize.
+    </div>
+    <div>Further reading about grid &amp; repeat - <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/repeat">https://developer.mozilla.org/en-US/docs/Web/CSS/repeat</a></div>
+    <div class="codebox w700">
+      <code class="section-meta-css">
+.grid-repeat {
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+} 
+  /* a. repeat apply parameters to all children 
+     b. auto-fit - CSS engine computes the largest the number of grid tracks such that 
+        the container contains grid tracks without overflow; 
+        -- also then the CSS engine collapses any emtpy grid track.
+        Each grid track contains exactly one child-element.
+     c. CSS engine computes computes minimum child width as 150px
+     d. compute max child width as 1fr (1fr == 1 flex-factor)
+       - Each &lt;flex&gt;-sized track takes a share of the remaining space in proportion to
+         its flex factor.
+     
+  */
+</code>
+    </div>
+  </div>
+  <div class="section-holder-example">
+    <div class="section-example h400">
+      <div class="minw140 wrapper-resize light-blue">
+        <div id="parent05" class="grid-repeat">
+          <div >child 1</div>
+          <div >child 2</div>
+          <div >child 3</div>
+          <div >child 4</div>
+        </div>
+      </div>
+      <div id="section-holder-code-tab-05" class="section-holder-code-tab">
+        <button class="section-tab">HTML</button>
+        <button class="section-tab">CSS</button>
+        <div class="section-tab-content code w450 h400">
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+
+var text_html =`<div id="parent05" class="grid-repeat">
+  <div >child 1</div>
+  <div >child 2</div>
+  <div >child 3</div>
+  <div >child 4</div>
+</div>`;
+var text_css =`#parent05 {
+  position:relative;
+  z-index:2;
+  width:100%;
+  height:100%;
+}
+
+.grid-repeat {
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));  
+}
+
+.grid-repeat div {
+  background-color: navy;
+  padding: 5px;
+  border-radius: 0.5rem;
+
+  display:grid; /* use idiom: super centered single item */
+  place-items: center;  
+}`;
+
+    var fn_init_tabbox05 =function() {
+      
+      var list_content = [escapeHtml(text_html), escapeHtml(text_css ) ];
+      var selector_code_tab ='#section-holder-code-tab-05';
+      var idx_select =1;
+      fn_init_tabbox(selector_code_tab, list_content, idx_select);
+    };
+    fn_init_tabbox05();
+  </script>
+</section>   
+
+
+
+
+
+
+<!-- 
+   06 SECTION 06 
+   06 SECTION 06 
+   06 SECTION 06 
+-->
+<section data-desc="section 06">
+  <div class="section-holder-meta">
+    <div class="section-meta-title">06. Classic Panel Layout</div>
+    <div class="section-meta-goal">
+      Goal: CSS Engine stretches Center panel and CSS Engine fixes other panels.
+    </div>
+    <div>Further reading about grid layouts - <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Basic_Concepts_of_Grid_Layout">https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Basic_Concepts_of_Grid_Layout</a></div>
+    <div class="codebox w700">
+      <code class="section-meta-css">
+  .grid-container-panel {
+    display: grid;
+    grid-template-rows:    150px 1fr 157px;
+      /* header row will be 150px tall,
+        center row will stretch (center row contains 3 panels; left,center,right)
+        footer row will be 150px tall,
+      */
+    grid-template-columns: 200px 1fr 185px;
+      /* left   column (vis left panel in center row) will be 200px wide,
+        center column (vis center panel) will stretch
+        right  column (vis right panel in center row)  will be 185px wide,
+      */
+    
+    height:100%;
+    width:100%;
+    grid-gap:3px;
+    padding:3px;
+    box-sizing:border-box;
+  }
+
+  .grid-container-panel div {
+    background-color: orange;
+    color: navy;
+    border-radius: 0.5rem;
+    padding:17px;
+  }
+
+  .grid-container-panel .header-row {
+    grid-column: 1 / 4;  /* span columnar-grid-line 1..4 (ie all cols)*/
+    grid-row: 1 / 2;     /* span row-grid-line 1..2 (ie row 1) */
+  }
+  .grid-container-panel .left-panel {
+    grid-column: 1 / 2;  /* span columnar-grid-line 1..2 (ie col 1)*/
+    grid-row: 2 / 3;     /* span row-grid-line 2..3 (ie row 2) */
+  }
+  .grid-container-panel .center-panel {
+    grid-column: 2 / 3;  /* span columnar-grid-line 2..3 (ie col 2)*/
+    grid-row: 2 / 3;     /* span row-grid-line 2..3 (ie row 2) */
+  }
+  .grid-container-panel .right-panel {
+    grid-column: 3 / 4;  /* span columnar-grid-line 3..4 (ie col 3)*/
+    grid-row: 2 / 3;     /* span row-grid-line 2..3 (ie row 2) */
+  }
+  .grid-container-panel .footer-row {
+    grid-column: 1 / 4;  /* span columnar-grid-line 1..4  (ie all cols) */
+    grid-row: 3 / 4;     /* span row-grid-line 3..4 (ie row 3) */
+  }
+      </code>
+    </div>
+  </div>
+  <div class="section-holder-example">
+    <div class="section-example h400">
+      <div class="minw140 wrapper-resize light-blue h400">
+        <div class="grid-container-panel">
+          <div class="header-row">HEADER ROW (occupies columns 1..3 and row 1) <br/>
+
+          </div>
+          
+          
+          <div class="left-panel">Left Panel<br/>(col01 =200px; row 2)<br/><br/>
+          
+          </div>
+          
+          <div class="center-panel">Center Panel<br/>(col02 Strecthy; row 2)<br/><br/>
+
+          </div>
+          
+          <div class="right-panel">Right Panel<br/>(col03 =170px;<br/> row 2)<br/><br/>
+
+          </div>
+          
+          
+          <div class="footer-row">FOOTER ROW (occupies columns 1..3 and row 3)<br/>
+          </div>
+        </div>
+      </div>
+      <div id="section-holder-code-tab-06" class="section-holder-code-tab">
+        <button class="section-tab">HTML</button>
+        <button class="section-tab">CSS</button>
+        <div class="section-tab-content code w450 h400" style="overflow:auto">
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+
+var text_html =`<div class="grid-container-panel">
+  <div class="header-row">HEADER ROW<br/>
+  </div>
+  
+  
+  <div class="left-panel">Left Panel<br/>
+  </div>
+  
+  <div class="center-panel">Center Panel<br/>
+  </div>
+  
+  <div class="right-panel">Right Panel<br/>
+  </div>
+  
+  <div class="footer-row">FOOTER ROW 
+  </div>
+</div>`;
+var text_css =`.grid-container-panel {
+  display: grid;
+  grid-template-rows:    150px 1fr 157px;
+  grid-template-columns: 200px 1fr 185px;
+  
+  height:100%;
+  width:100%;
+  grid-gap:3px;
+  padding:3px;
+  box-sizing:border-box;
+}
+
+.grid-container-panel div {
+  background-color: orange;
+  color: navy;
+  border-radius: 0.5rem;
+  padding:17px;
+}
+
+.grid-container-panel .header-row {
+  grid-column: 1 / 4;  
+  grid-row: 1 / 2;     
+}
+.grid-container-panel .left-panel {
+  grid-column: 1 / 2;  
+  grid-row: 2 / 3;    
+}
+.grid-container-panel .center-panel {
+  grid-column: 2 / 3;  
+  grid-row: 2 / 3;     
+}
+.grid-container-panel .right-panel {
+  grid-column: 3 / 4;  
+  grid-row: 2 / 3;     
+}
+.grid-container-panel .footer-row {
+  grid-column: 1 / 4;  
+  grid-row: 3 / 4;    
+}`;
+
+    var fn_init_tabbox06 =function() {
+      
+      var list_content = [escapeHtml(text_html), escapeHtml(text_css ) ];
+      var selector_code_tab ='#section-holder-code-tab-06';
+      var idx_select =1;
+      fn_init_tabbox(selector_code_tab, list_content, idx_select);
+    };
+    fn_init_tabbox06();
+  </script>
+</section>   
+
+
+
+
+
+
+<!-- 
+   07 SECTION 07 
+   07 SECTION 07 
+   07 SECTION 07 
+-->
+<section data-desc="section 07">
+  <div class="section-holder-meta">
+    <div class="section-meta-title">07. Tiles (Nested Grids) </div>
+    <div class="section-meta-goal">
+      Goal: Display tile element in a grid.
+    </div>
+    <div>Further reading about grid &amp; repeat - <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Basic_Concepts_of_Grid_Layout#nesting_grids">https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Basic_Concepts_of_Grid_Layout#nesting_grids</a></div>
+    <div class="codebox w700">
+      <code class="section-meta-css">
+.grid-container-of-tile {
+  display:grid;
+  grid-template-columns: repeat(auto-fit, 200px);
+  
+}
+.tile {
+  display:grid;
+  position:relative;
+  grid-template-rows: 40px 110px 1fr;
+  grid-template-columns: auto;
+  width:150px;
+  height:200px;
+  border:1px solid black;
+  border-radius:5px;
+  
+  padding: 5px;
+  margin:  5px;
+}
+.tile h3 {
+  margin:0;
+  padding:0 0 0 3px;
+  line-height:1.2rem;
+  font-size:  1.2rem;
+  background-color:navy;
+  color:white;
+}
+.tile-image {
+  display:grid;
+  justify-content:center;
+}
+</code>
+    </div>
+  </div>
+  <div class="section-holder-example">
+    <div class="section-example h400">
+      <div class="w600 h500 wrapper-resize light-blue" style="overflow:auto;">
+        <div class="grid-container-of-tile">
+          <a class="textnormal" href="#tile01">
+            <div class="tile">
+              <h3>Title 01</h3>
+              <div class="tile-image">
+                <svg viewBox="0 0 100 100" width="100px" height="100px" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M 42.884 11.621 Q 50.001 -0.42 57.117 11.621 L 97.628 80.16 Q 104.745 92.201 90.511 92.201 L 9.49 92.201 Q -4.744 92.201 2.373 80.16 Z" 
+                        style="stroke: rgb(0, 0, 0); fill: rgb(255, 123, 0);" />
+                  <ellipse style="stroke: rgb(0, 0, 0); fill: rgb(39, 0, 214);" cx="50" cy="55" rx="5" ry="5"/>
+                </svg>
+              </div>
+              <span>A brief description of title01</span>
+            </div>
+          </a>
+          
+          <a class="textnormal" href="#tile02">
+            <div class="tile">
+              <h3>Title 02</h3>
+              <div class="tile-image">
+                <svg viewBox="0 0 100 100" width="100px" height="100px" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M 42.884 11.621 Q 50.001 -0.42 57.117 11.621 L 97.628 80.16 Q 104.745 92.201 90.511 92.201 L 9.49 92.201 Q -4.744 92.201 2.373 80.16 Z" style="stroke: rgb(0, 0, 0); fill: rgb(255, 123, 0);"/>
+                  <ellipse style="stroke: rgb(0, 0, 0); fill: rgb(39, 0, 214);" cx="39" cy="55" rx="5" ry="5"/>
+                  <ellipse style="stroke: rgb(0, 0, 0); fill: rgb(39, 0, 214);" cx="61" cy="55" rx="5" ry="5"/>
+                </svg>
+              </div>
+              <span>A brief description of title02</span>
+            </div>
+          </a>
+          
+          <a class="textnormal" href="#tile03">
+            <div class="tile">
+              <h3>Title 03</h3>
+              <div class="tile-image">
+                  <svg viewBox="0 0 100 100" width="100px" height="100px" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M 42.884 11.621 Q 50.001 -0.42 57.117 11.621 L 97.628 80.16 Q 104.745 92.201 90.511 92.201 L 9.49 92.201 Q -4.744 92.201 2.373 80.16 Z" style="stroke: rgb(0, 0, 0); fill: rgb(255, 123, 0);"/>
+                    <ellipse style="stroke: rgb(0, 0, 0); fill: rgb(39, 0, 214);" cx="38" cy="50" rx="5" ry="5"/>
+                    <ellipse style="stroke: rgb(0, 0, 0); fill: rgb(39, 0, 214);" cx="63" cy="50" rx="5" ry="5"/>
+                    <ellipse style="stroke: rgb(0, 0, 0); fill: rgb(39, 0, 214);" cx="50.006" cy="71.101" rx="5" ry="5"/>
+                  </svg>
+              </div>
+              <span>A brief description of 3rd item</span>
+            </div>
+          </a>    
+          
+          <a class="textnormal" href="#tile04">
+            <div class="tile">
+              <h3>Title 04</h3>
+              <div class="tile-image">
+                  <svg viewBox="0 0 100 100" width="100px" height="100px" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M 42.884 11.621 Q 50.001 -0.42 57.117 11.621 L 97.628 80.16 Q 104.745 92.201 90.511 92.201 L 9.49 92.201 Q -4.744 92.201 2.373 80.16 Z" style="stroke: rgb(0, 0, 0); fill: rgb(255, 123, 0);"/>
+                    <ellipse style="stroke: rgb(0, 0, 0); fill: rgb(39, 0, 214);" cx="50" cy="55" rx="5" ry="5"/>
+                    <ellipse style="stroke: rgb(0, 0, 0); fill: rgb(39, 0, 214);" cx="50" cy="33" rx="5" ry="5"/>
+                    <ellipse style="stroke: rgb(0, 0, 0); fill: rgb(39, 0, 214);" cx="70" cy="70" rx="5" ry="5"/>
+                    <ellipse style="stroke: rgb(0, 0, 0); fill: rgb(39, 0, 214);" cx="31" cy="70" rx="5" ry="5"/>
+                  </svg>
+              </div>
+              <span>A brief description of 4th item</span>
+            </div>
+          </a>    
+          
+          <a class="textnormal" href="#tile05">
+            <div class="tile">
+              <h3>Title 05</h3>
+              <div class="tile-image">
+                  <svg viewBox="0 0 100 100" width="100px" height="100px" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M 42.884 11.621 Q 50.001 -0.42 57.117 11.621 L 97.628 80.16 Q 104.745 92.201 90.511 92.201 L 9.49 92.201 Q -4.744 92.201 2.373 80.16 Z" style="stroke: rgb(0, 0, 0); fill: rgb(255, 123, 0);"/>
+                    <ellipse style="stroke: rgb(0, 0, 0); fill: rgb(39, 0, 214);" cx="40" cy="53" rx="5" ry="5"/>
+                    <ellipse style="stroke: rgb(0, 0, 0); fill: rgb(39, 0, 214);" cx="50" cy="33" rx="5" ry="5"/>
+                    <ellipse style="stroke: rgb(0, 0, 0); fill: rgb(39, 0, 214);" cx="70" cy="70" rx="5" ry="5"/>
+                    <ellipse style="stroke: rgb(0, 0, 0); fill: rgb(39, 0, 214);" cx="31" cy="70" rx="5" ry="5"/>
+                    <ellipse style="stroke: rgb(0, 0, 0); fill: rgb(39, 0, 214);" cx="60.646" cy="53.264" rx="5" ry="5"/>
+                  </svg>
+              </div>
+              <span>A brief description of 5th item</span>
+            </div>
+          </a>    
+          
+        </div>
+      </div>
+      <div id="section-holder-code-tab-07" class="section-holder-code-tab">
+        <button class="section-tab">HTML</button>
+        <button class="section-tab">CSS</button>
+        <div class="section-tab-content code w450 h400" style="overflow:auto;">
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+
+var text_html =`<div class="grid-container-of-tile">
+  <a class="textnormal" href="#tile01">
+    <div class="tile">
+      <h3>Title 01</h3>
+      <div class="tile-image">
+          ... // image content
+      </div>
+      <span>A brief description of title01</span>
+    </div>
+  </a>
+
+  <a class="textnormal" href="#tile02">
+    <div class="tile">
+      <h3>Title 02</h3>
+      <div class="tile-image">
+          ...
+      </div>
+      <span>A brief description of title02</span>
+    </div>
+  </a>
+
+  <a class="textnormal" href="#tile03">
+    <div class="tile">
+      <h3>Title 03</h3>
+      <div class="tile-image">
+          ...
+      </div>
+      <span>A brief description of 3rd item</span>
+    </div>
+  </a>    
+
+  <a class="textnormal" href="#tile04">
+    <div class="tile">
+      <h3>Title 04</h3>
+      <div class="tile-image">
+          ...
+      </div>
+      <span>A brief description of 4th item</span>
+    </div>
+  </a>    
+
+  <a class="textnormal" href="#tile05">
+    <div class="tile">
+      <h3>Title 05</h3>
+      <div class="tile-image">
+          ...
+      </div>
+      <span>A brief description of 5th item</span>
+    </div>
+  </a>    
+</div>`;
+var text_css =`.grid-container-of-tile {
+  display:grid;
+  grid-template-columns: repeat(auto-fit, 200px);
+  
+}
+.tile {
+  display:grid;
+  position:relative;
+  grid-template-rows: 40px 110px 1fr;
+  grid-template-columns: auto;
+  width:150px;
+  height:200px;
+  border:1px solid black;
+  border-radius:5px;
+  
+  padding: 5px;
+  margin:  5px;
+}
+.tile h3 {
+  margin:0;
+  padding:0 0 0 3px;
+  line-height:1.2rem;
+  font-size:  1.2rem;
+  background-color:navy;
+  color:white;
+}
+.tile-image {
+  display:grid;
+  justify-content:center;
+}
+`;
+
+    var fn_init_tabbox07 =function() {
+      
+      var list_content = [escapeHtml(text_html), escapeHtml(text_css ) ];
+      var selector_code_tab ='#section-holder-code-tab-07';
+      var idx_select =1;
+      fn_init_tabbox(selector_code_tab, list_content, idx_select);
+    };
+    fn_init_tabbox07();
+  </script>
+</section>   
+
+
+
+<br/><br/><br/><br/><br/><br/><br/>
+
+</body>
+</html>

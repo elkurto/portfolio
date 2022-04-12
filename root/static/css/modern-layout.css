@@ -1,0 +1,336 @@
+:root {
+  --light-blue:#77aefe;
+  --light-blue-border: #239fcc;
+  --light-yellow:#deef99;
+  --offwhite:#cddeef;
+}
+.light-blue {
+  background-color: var(--light-blue);
+  border: 1px solid var(--light-blue-border); 
+}
+
+html {
+  margin:0;
+  padding:0;
+}
+body {
+  margin:0;
+  padding:0;
+  background-color: black;
+  color:antiquewhite;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+}
+
+a {
+  color:var(--light-yellow);
+}
+a:visited {
+  color:var(--offwhite);
+}
+a:hover {
+  color:var(--light-blue);
+}
+
+
+h1 {
+  padding:0;
+  margin:10px 0px 0px 10px;
+}
+h2 {
+  padding:0;
+  margin:0px 0px 0px 12px;
+}
+citation {
+  padding:0;
+  margin:0px 0px 0px 12px;
+}
+
+
+section {
+  padding:20px;
+}
+.codebox  {
+  border: 1px solid lightyellow;
+}
+code {
+  white-space: pre;
+  color:lightyellow;
+  
+}
+
+.section-example {
+  display:grid;
+  column-gap: 20px;
+  grid-template-columns: auto auto;
+  align-items: start;
+  padding: 20px;
+  
+  
+}
+
+.wrapper-resize {
+  resize:both;
+  position: relative;
+  overflow: hidden;
+  min-width:300px;
+  min-height:200px;
+  height:100%;
+  
+  margin:5px;
+}
+
+
+.section-holder-code-tab {
+  /*display:block;*/
+  position:relative;
+  width:500px;
+  height:300px;
+  
+}
+
+.section-tab {
+  border:none;
+  border-radius:0.5rem 0.5rem 0 0;
+  padding:0.5rem;
+  z-index:1;
+  background-color: grey;
+}
+.section-tab.active {
+  
+  
+  z-index:1;
+  background-color: var(--light-blue);
+  border:1px solid var(--light-blue-border);
+  border-bottom:1px solid transparent;
+}
+
+.section-tab-content {
+  background-color: var(--light-blue);
+  border:1px solid var(--light-blue-border);
+  margin-top:-1px;
+  padding:5px;
+  color: white;
+}
+.section-tab-content.code {
+  white-space: pre;
+}
+
+
+#parent01 {
+  position:relative;
+  z-index: 2;
+  width:100%;
+  height:100%;
+}
+
+.grid-3col-centered {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  place-items:center;
+}
+
+#parent01 div {
+  background-color: navy;
+  padding: 5px;
+  border-radius: 0.5rem;
+}
+
+#parent02 {
+  position:relative;
+  z-index: 2;
+  width:100%;
+  height:100%;
+}
+
+.super-centered,
+.grid-1col-centered {
+  display: grid;
+  place-items:center;
+  /* grid-template-columns: auto; // applied by default */
+}
+
+#parent02 div {
+  background-color: navy;
+  padding: 5px;
+  border-radius: 0.5rem;
+}
+
+#parent03 {
+  position:relative;
+  z-index:2;
+  width:100%;
+  height:100%;
+}
+
+.flex-with-strechy-children {
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  
+}
+
+.flex-with-strechy-children div {
+  flex: 1 1 110px; /* flex-grow flex-shrink flex-basis */
+  margin: 5px;
+
+  background-color: navy;
+  padding: 5px;
+  border-radius: 0.5rem;
+
+  display:grid; /* use idiom: super centered single item */
+  place-items: center;  
+}
+
+#parent04 {
+  position:relative;
+  z-index:2;
+  width:100%;
+  height:100%;
+}
+
+.flex-with-children-that-shrink-only {
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  
+}
+
+.flex-with-children-that-shrink-only div {
+  flex: 0 1 110px; /* flex-grow flex-shrink flex-basis */
+  margin: 5px;
+
+  background-color: navy;
+  padding: 5px;
+  border-radius: 0.5rem;
+
+  
+  display:grid; /* use idiom: super centered single item */
+  place-items: center;
+}
+
+#parent05 {
+  position:relative;
+  z-index:2;
+  width:100%;
+  height:100%;
+}
+
+.grid-repeat {
+  display: grid;
+  grid-gap: 1rem;
+  
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
+}
+
+.grid-repeat div {
+  background-color: navy;
+  padding: 5px;
+  border-radius: 0.5rem;
+
+  display:grid; /* use idiom: super centered single item */
+  place-items: center;  
+}
+
+/* 06 SECTION 06 */
+.grid-container-panel {
+  display: grid;
+  grid-template-rows:    150px 1fr 157px;
+  /* header row will be 150px tall,
+     center row will stretch (center row contains 3 panels; left,center,right)
+     footer row will be 150px tall,
+   */
+  grid-template-columns: 200px 1fr 185px;
+  /* left   column (vis left panel in center row) will be 200px wide,
+     center column (vis center panel) will stretch
+     right  column (vis right panel in center row)  will be 185px wide,
+   */
+  
+  height:100%;
+  width:100%;
+  grid-gap:3px;
+  padding:3px;
+  box-sizing:border-box;
+}
+
+.grid-container-panel div {
+  background-color: orange;
+  color: navy;
+  border-radius: 0.5rem;
+  padding:17px;
+}
+
+.grid-container-panel .header-row {
+  grid-column: 1 / 4;  /* span columnar-grid-line 1..4 (ie all cols)*/
+  grid-row: 1 / 2;     /* span row-grid-line 1..2 (ie row 1) */
+}
+.grid-container-panel .left-panel {
+  grid-column: 1 / 2;  /* span columnar-grid-line 1..2 (ie col 1)*/
+  grid-row: 2 / 3;     /* span row-grid-line 2..3 (ie row 2) */
+}
+.grid-container-panel .center-panel {
+  grid-column: 2 / 3;  /* span columnar-grid-line 2..3 (ie col 2)*/
+  grid-row: 2 / 3;     /* span row-grid-line 2..3 (ie row 2) */
+}
+.grid-container-panel .right-panel {
+  grid-column: 3 / 4;  /* span columnar-grid-line 3..4 (ie col 3)*/
+  grid-row: 2 / 3;     /* span row-grid-line 2..3 (ie row 2) */
+}
+.grid-container-panel .footer-row {
+  grid-column: 1 / 4;  /* span columnar-grid-line 1..4  (ie all cols) */
+  grid-row: 3 / 4;     /* span row-grid-line 3..4 (ie row 3) */
+}
+
+
+
+
+a.textnormal {
+  
+  text-decoration:none;
+  color:white;
+}
+
+.grid-container-of-tile {
+  display:grid;
+  grid-template-columns: repeat(auto-fit, 200px);
+  
+}
+.tile {
+  display:grid;
+  position:relative;
+  grid-template-rows: 40px 110px 1fr;
+  grid-template-columns: auto;
+  width:150px;
+  height:200px;
+  border:1px solid black;
+  border-radius:5px;
+  
+  padding: 5px;
+  margin:  5px;
+}
+.tile h3 {
+  margin:0;
+  padding:0 0 0 3px;
+  line-height:1.2rem;
+  font-size:  1.2rem;
+  background-color:navy;
+  color:white;
+}
+.tile-image {
+  display:grid;
+  justify-content:center;
+}
+
+
+
+.h400 { height:400px; }
+.h500 { height:500px; }
+
+.w400 {  width:400px; }
+.w450 {  width:450px; }
+.w500 {  width:500px; }
+.w600 {  width:600px; }
+.w700 {  width:700px; }
+
+.minh450 { min-height:450px; }
+.minw140 { min-width:140px; }
