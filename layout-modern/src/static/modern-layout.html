@@ -81,9 +81,12 @@
 <banner>
 <h1>Sample Grid And Flex Layouts For  Components </h1>
 <h2>Responsive Web Design</h2>
-<citation>This page continues the awesome the lesson; <a href="https://1linelayouts.glitch.me/">https://1linelayouts.glitch.me/</a> </citation>
+<div class="citation">This page continues the awesome the lesson; <br/>
+<a href="https://1linelayouts.glitch.me/">https://1linelayouts.glitch.me/</a> </div>
 <br/>
-<citation>And continues Mozilla's formal documentation; <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Basic_Concepts_of_Grid_Layout">https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Basic_Concepts_of_Grid_Layout</a></citation>
+<div class="citation">And continues Mozilla's formal documentation;<br/>
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Basic_Concepts_of_Grid_Layout">Mozilla - Basic_Concepts_of_Grid_Layout</a>
+</div>
 </banner>
 
 <!-- 
@@ -92,24 +95,37 @@
    01 SECTION 01 
 -->
   <section data-desc="section 01">
+
     <div class="section-holder-meta">
-      <div class="section-meta-title">01. Parent centers children vertically and horizontally. </div>
+      <h3 id="grid_3col_centered" class="section-meta-title"><a href="#grid_3col_centered">01. Parent centers children vertically and horizontally.</a></h3>
+      
       <div class="section-meta-goal">
         Goal: Parent DIV centers child elements.  Works with resizeable parent.
       </div>
-      <div class="codebox" style="width:700px">
+      <br/>
+      <div>
+        Further Reading<br/> 
+        - place-items:center; <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/place-items">Mozilla - place-items:center;</a>
+        <br/>
+        - Grid Layout; <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Basic_Concepts_of_Grid_Layout">Mozilla - Grid Layout Concepts</a>
+      </div>
+      <div class="codebox">
         <code class="section-meta-css">
-  .grid-3col-centered { 
-    display: grid;                         /* use a grid layout */
-    grid-template-columns: auto auto auto; /* 3 col - auto distribute col_width */
-    place-items:center;                    /* center vertically and horizontally*/
-  }
+.grid-3col-centered { 
+  display: grid;                         
+  grid-template-columns: auto auto auto; 
+  place-items:center;                    
+}
+/*  use a grid layout 
+    3 col - auto distribute col_width 
+    center vertically and horizontally
+*/
         </code>
       </div>
     </div>
-    <div class="section-holder-example">
+    
       <div class="section-example">
-        <div class="wrapper-resize">
+        <div class="wrapper-resize h400 w300">
         <div id="parent01" class="grid-3col-centered light-blue">
           <div>child 1</div>
           <div>:-] 2</div>
@@ -119,7 +135,7 @@
           <div>child 6</div>
         </div>
         </div>
-        <div id="section-holder-code-tab-01" class="section-holder-code-tab h400">
+        <div id="section-holder-code-tab-01" class="section-holder-code-tab w400">
           <button class="section-tab">HTML</button>
           <button class="section-tab">CSS</button>
           <div class="section-tab-content code" style="width:400px">
@@ -127,7 +143,7 @@
           </div>
         </div>
       </div>
-    </div>
+    
 
     <script type="text/javascript">
       var fn_init_tabbox01 =function() {
@@ -184,23 +200,28 @@
 -->
   <section data-desc="section 02">
     <div class="section-holder-meta">
-      <div class="section-meta-title">02. Super center (single item). </div>
+      <h3 id="grid_super_centered" class="section-meta-title"><a href="#grid_super_centered">02. Super center (single item).</a></h3>
       <div class="section-meta-goal">
         Goal: Parent DIV centers one child element.  Works with resizeable parent.
       </div>
-      <div class="codebox" style="width:700px">
+      <div class="codebox">
         <code class="section-meta-css">
   .super-centered { 
-    display: grid;                         /* use a grid layout */
-    place-items:center;                    /* center vertically and horizontally*/
-    /* grid-template-columns: auto; // applied by default */
+    display: grid;                         
+    place-items:center;                    
+    
   }
+  /* use a grid layout
+     center vertically and horizontally
+     grid-template-columns: auto; 
+     // applied by default 
+  */     
         </code>
       </div>
     </div>
-    <div class="section-holder-example">
-      <div class="section-example minh450">
-        <div class="wrapper-resize">
+    
+      <div class="section-example">
+        <div class="wrapper-resize h300">
           <div id="parent02" class="super-centered light-blue">
             <div>child 1</div>
           </div>
@@ -213,7 +234,7 @@
           </div>
         </div>
       </div>
-    </div>
+    
 
     <script type="text/javascript">
 
@@ -264,11 +285,12 @@
 -->
 <section data-desc="section 03">
   <div class="section-holder-meta">
-    <div class="section-meta-title">03. Flex Layout (with stretchy children) </div>
+    <h3 id="flex_with_strechy_children" class="section-meta-title"><a href="#flex_with_strechy_children">03. Flex Layout (with stretchy children)</a></h3>
+    
     <div class="section-meta-goal">
       Goal: Configure child-elements to be responsive and automatically resize.
     </div>
-    <div class="codebox w700">
+    <div class="codebox">
       <code class="section-meta-css">
 .flex-with-strechy-children {
   display:flex;
@@ -278,30 +300,31 @@
 }
 
 .flex-with-strechy-children div {
-  flex: 1 1 110px;   /* flex-grow flex-shrink flex-basis */
+  /* flex-grow flex-shrink flex-basis */
+  flex: 1 1 110px;   
   margin: 5px;
 }
       </code>
     </div>
   </div>
-  <div class="section-holder-example h500">
-    <div class="section-example h400 ">
-      <div class="minw140 wrapper-resize">
-        <div id="parent03" class="flex-with-strechy-children light-blue">
-          <div >child 1</div>
-          <div >child 2</div>
-          <div >child 3</div>
-        </div>
+  
+  <div class="section-example ">
+    <div class="wrapper-resize h300">
+      <div id="parent03" class="flex-with-strechy-children light-blue">
+        <div >child 1</div>
+        <div >child 2</div>
+        <div >child 3</div>
       </div>
-      <div id="section-holder-code-tab-03" class="section-holder-code-tab">
-        <button class="section-tab">HTML</button>
-        <button class="section-tab">CSS</button>
-        <div class="section-tab-content code w450 h450">
-          
-        </div>
+    </div>
+    <div id="section-holder-code-tab-03" class="section-holder-code-tab">
+      <button class="section-tab">HTML</button>
+      <button class="section-tab">CSS</button>
+      <div class="section-tab-content code w450 h450">
+        
       </div>
     </div>
   </div>
+
 
   <script type="text/javascript">
 
@@ -325,7 +348,8 @@ var text_css =`#parent03 {
 }
 
 .flex-with-strechy-children div {
-  flex: 1 1 110px; /* flex-grow flex-shrink flex-basis */
+  /* flex-grow flex-shrink flex-basis */
+  flex: 1 1 110px; 
   margin: 5px;
 
   background-color: navy;
@@ -357,29 +381,40 @@ var text_css =`#parent03 {
 -->
 <section data-desc="section 04">
   <div class="section-holder-meta">
-    <div class="section-meta-title">04. Flex Layout (without stretchy children) </div>
+    <h3 id="flex_center_children" class="section-meta-title"><a href="#flex_center_children">04. Flex Layout (without stretchy children)</a></h3>
+    
     <div class="section-meta-goal">
       Goal: Configure child-elements to be responsive and automatically resize.
     </div>
-    <div class="codebox w700">
+    <div class="codebox">
       <code class="section-meta-css">
-.flex-with-strechy-children {
+.flex-center-children {
   display:flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-around;
+  align-items:center;
 }
 
-.flex-with-strechy-children div {
-  flex: 0 1 110px; /* flex-grow flex-shrink flex-basis */
+.flex-center-children div {
+  /* flex-grow flex-shrink flex-basis */
+  flex: 0 1 110px; 
   margin: 5px;
+
+  background-color: navy;
+  padding: 5px;
+  border-radius: 0.5rem;
+
+  /* idiom: center child content */
+  display:grid; 
+  place-items: center;
 }
       </code>
     </div>
   </div>
-  <div class="section-holder-example">
-    <div class="section-example h400">
-      <div class="minw140 wrapper-resize">
-        <div id="parent04" class="flex-with-children-that-shrink-only light-blue">
+  
+    <div class="section-example">
+      <div class="wrapper-resize h300">
+        <div id="parent04" class="flex-center-children light-blue">
           <div >child 1</div>
           <div >child 2</div>
           <div >child 3</div>
@@ -393,35 +428,31 @@ var text_css =`#parent03 {
         </div>
       </div>
     </div>
-  </div>
+  
 
   <script type="text/javascript">
 
-var text_html =`<div id="parent04" class="flex-with-strechy-children">
-  <div class="stretchy-child">child 1</div>
-  <div class="stretchy-child">child 2</div>
-  <div class="stretchy-child">child 3</div>
+var text_html =`<div id="parent04" class="flex-center-children light-blue">
+  <div >child 1</div>
+  <div >child 2</div>
+  <div >child 3</div>
 </div>`;
-var text_css =`#parent04 {
-  position:relative;
-  z-index:2;
-  width:100%;
-  height:100%;
-}
-
-.flex-with-children-that-shrink-only {
+var text_css =`.flex-center-children {
   display:flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-around;
+  align-items:center;
 }
 
-.flex-with-children-that-shrink-only div {
+.flex-center-children div {
   flex: 0 1 110px; /* flex-grow flex-shrink flex-basis */
   margin: 5px;
 
   background-color: navy;
   padding: 5px;
   border-radius: 0.5rem;
+  display:grid; /* idiom: center child content */
+  place-items: center;
 }`;
 
     var fn_init_tabbox04 =function() {
@@ -448,35 +479,44 @@ var text_css =`#parent04 {
 -->
 <section data-desc="section 05">
   <div class="section-holder-meta">
-    <div class="section-meta-title">05. Grid Repeat (equal cells - cells float left) </div>
+    <h3 id="grid_repeat" class="section-meta-title"><a href="#grid_repeat">05. Grid Repeat (equal cells - cells float left)</a></h3>
+
     <div class="section-meta-goal">
       Goal: Configure child-elements to be responsive and automatically resize.
     </div>
     <div>Further reading about grid &amp; repeat - <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/repeat">https://developer.mozilla.org/en-US/docs/Web/CSS/repeat</a></div>
-    <div class="codebox w700">
+    <div class="codebox">
       <code class="section-meta-css">
 .grid-repeat {
   display: grid;
   grid-gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: 
+     repeat(auto-fit, minmax(150px, 1fr));
 } 
   /* a. repeat apply parameters to all children 
-     b. auto-fit - CSS engine computes the largest the number of grid tracks such that 
-        the container contains grid tracks without overflow; 
-        -- also then the CSS engine collapses any emtpy grid track.
-        Each grid track contains exactly one child-element.
-     c. CSS engine computes computes minimum child width as 150px
-     d. compute max child width as 1fr (1fr == 1 flex-factor)
-       - Each &lt;flex&gt;-sized track takes a share of the remaining space in proportion to
-         its flex factor.
+     b. auto-fit - CSS engine computes the largest
+        number of grid tracks such that 
+        the container contains grid tracks without
+        overflow; 
+        -- also then the CSS engine collapses any 
+        emtpy grid track.
+        Each grid track contains exactly one 
+        child-element.
+     c. CSS engine computes computes minimum child
+        width as 150px
+     d. compute max child width as 1fr
+         Note: (1fr == 1 flex-factor)
+       - Each &lt;flex&gt;-sized track takes a 
+         share of the remaining space in proportion 
+         to its flex factor (1fr).
      
   */
 </code>
     </div>
   </div>
-  <div class="section-holder-example">
-    <div class="section-example h400">
-      <div class="minw140 wrapper-resize light-blue">
+  
+    <div class="section-example">
+      <div class="wrapper-resize h300 light-blue">
         <div id="parent05" class="grid-repeat">
           <div >child 1</div>
           <div >child 2</div>
@@ -487,12 +527,12 @@ var text_css =`#parent04 {
       <div id="section-holder-code-tab-05" class="section-holder-code-tab">
         <button class="section-tab">HTML</button>
         <button class="section-tab">CSS</button>
-        <div class="section-tab-content code w450 h400">
+        <div class="section-tab-content code w500 h400">
           
         </div>
       </div>
     </div>
-  </div>
+  
 
   <script type="text/javascript">
 
@@ -547,24 +587,30 @@ var text_css =`#parent05 {
 -->
 <section data-desc="section 06">
   <div class="section-holder-meta">
-    <div class="section-meta-title">06. Classic Panel Layout</div>
+    <h3 id="classic_panel_layout" class="section-meta-title"><a href="#classic_panel_layout">06. Classic Panel Layout</a></h3>
+
     <div class="section-meta-goal">
       Goal: CSS Engine stretches Center panel and CSS Engine fixes other panels.
     </div>
     <div>Further reading about grid layouts - <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Basic_Concepts_of_Grid_Layout">https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Basic_Concepts_of_Grid_Layout</a></div>
-    <div class="codebox w700">
+    <div class="codebox">
       <code class="section-meta-css">
   .grid-container-panel {
     display: grid;
     grid-template-rows:    150px 1fr 157px;
-      /* header row will be 150px tall,
-        center row will stretch (center row contains 3 panels; left,center,right)
-        footer row will be 150px tall,
+      /* - header row will be 150px tall,
+         - center row will stretch 
+           (center row contains 3 panels; 
+             left,center,right)
+         - footer row will be 150px tall,
       */
     grid-template-columns: 200px 1fr 185px;
-      /* left   column (vis left panel in center row) will be 200px wide,
-        center column (vis center panel) will stretch
-        right  column (vis right panel in center row)  will be 185px wide,
+      /* - left   column (vis left panel in 
+           center row) will be 200px wide,
+         - center column (vis center panel) will 
+           stretch.
+         - right  column will be 185px wide
+        
       */
     
     height:100%;
@@ -582,32 +628,50 @@ var text_css =`#parent05 {
   }
 
   .grid-container-panel .header-row {
-    grid-column: 1 / 4;  /* span columnar-grid-line 1..4 (ie all cols)*/
-    grid-row: 1 / 2;     /* span row-grid-line 1..2 (ie row 1) */
+    grid-column: 1 / 4;  
+    grid-row: 1 / 2;     
+    /* 
+      span columnar-grid-line 1..4 (ie all cols) 
+      span row-grid-line 1..2 (ie row 1) 
+    */
   }
   .grid-container-panel .left-panel {
-    grid-column: 1 / 2;  /* span columnar-grid-line 1..2 (ie col 1)*/
-    grid-row: 2 / 3;     /* span row-grid-line 2..3 (ie row 2) */
+    grid-column: 1 / 2;  
+    grid-row: 2 / 3;     
+    /* 
+      span columnar-grid-line 1..2 (ie col 1)
+      span columnar-grid-line 1..2 (ie col 1)
+    */
   }
   .grid-container-panel .center-panel {
-    grid-column: 2 / 3;  /* span columnar-grid-line 2..3 (ie col 2)*/
-    grid-row: 2 / 3;     /* span row-grid-line 2..3 (ie row 2) */
+    grid-column: 2 / 3;  
+    grid-row: 2 / 3;     
+    /*
+      span columnar-grid-line 2..3 (ie col 2)
+      span row-grid-line 2..3 (ie row 2) 
+    */
   }
   .grid-container-panel .right-panel {
-    grid-column: 3 / 4;  /* span columnar-grid-line 3..4 (ie col 3)*/
-    grid-row: 2 / 3;     /* span row-grid-line 2..3 (ie row 2) */
+    grid-column: 3 / 4;  
+    grid-row: 2 / 3;     
+    /* span columnar-grid-line 3..4 (ie col 3)*/
+    /* span row-grid-line 2..3 (ie row 2) */
   }
   .grid-container-panel .footer-row {
-    grid-column: 1 / 4;  /* span columnar-grid-line 1..4  (ie all cols) */
-    grid-row: 3 / 4;     /* span row-grid-line 3..4 (ie row 3) */
+    grid-column: 1 / 4;  
+    grid-row: 3 / 4;     
+    /*
+      span columnar-grid-line 1..4  (ie all cols) 
+      span row-grid-line 3..4 (ie row 3) 
+    */
   }
       </code>
     </div>
   </div>
-  <div class="section-holder-example">
-    <div class="section-example h400">
-      <div class="minw140 wrapper-resize light-blue h400">
-        <div class="grid-container-panel">
+  
+    <div class="section-example-wide">
+      <div class="wrapper-resize light-blue">
+        <div class="grid-container-panel" >
           <div class="header-row">HEADER ROW (occupies columns 1..3 and row 1) <br/>
 
           </div>
@@ -633,12 +697,12 @@ var text_css =`#parent05 {
       <div id="section-holder-code-tab-06" class="section-holder-code-tab">
         <button class="section-tab">HTML</button>
         <button class="section-tab">CSS</button>
-        <div class="section-tab-content code w450 h400" style="overflow:auto">
+        <div class="section-tab-content code w450 h800" >
           
         </div>
       </div>
     </div>
-  </div>
+
 
   <script type="text/javascript">
 
@@ -722,12 +786,14 @@ var text_css =`.grid-container-panel {
 -->
 <section data-desc="section 07">
   <div class="section-holder-meta">
-    <div class="section-meta-title">07. Tiles (Nested Grids) </div>
+    <h3 id="tiles_nested_grid" class="section-meta-title"><a href="#tiles_nested_grid">07. Tiles (Nested Grids)</a></h3>
+
+    
     <div class="section-meta-goal">
       Goal: Display tile element in a grid.
     </div>
     <div>Further reading about grid &amp; repeat - <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Basic_Concepts_of_Grid_Layout#nesting_grids">https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Basic_Concepts_of_Grid_Layout#nesting_grids</a></div>
-    <div class="codebox w700">
+    <div class="codebox">
       <code class="section-meta-css">
 .grid-container-of-tile {
   display:grid;
@@ -762,9 +828,9 @@ var text_css =`.grid-container-panel {
 </code>
     </div>
   </div>
-  <div class="section-holder-example">
-    <div class="section-example h400">
-      <div class="w600 h500 wrapper-resize light-blue" style="overflow:auto;">
+  
+    <div class="section-example-wide">
+      <div class="wrapper-resize light-blue">
         <div class="grid-container-of-tile">
           <a class="textnormal" href="#tile01">
             <div class="tile">
@@ -847,12 +913,12 @@ var text_css =`.grid-container-panel {
       <div id="section-holder-code-tab-07" class="section-holder-code-tab">
         <button class="section-tab">HTML</button>
         <button class="section-tab">CSS</button>
-        <div class="section-tab-content code w450 h400" style="overflow:auto;">
+        <div class="section-tab-content code w450 h800">
           
         </div>
       </div>
     </div>
-  </div>
+  
 
   <script type="text/javascript">
 
