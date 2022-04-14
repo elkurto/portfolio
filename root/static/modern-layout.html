@@ -110,7 +110,7 @@
         - Grid Layout; <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Basic_Concepts_of_Grid_Layout">Mozilla - Grid Layout Concepts</a>
       </div>
       <div class="codebox">
-        <code class="section-meta-css">
+        
 .grid-3col-centered { 
   display: grid;                         
   grid-template-columns: auto auto auto; 
@@ -120,11 +120,11 @@
     3 col - auto distribute col_width 
     center vertically and horizontally
 */
-        </code>
+        
       </div>
     </div>
     
-      <div class="section-example">
+      <div class="section-example-wide">
         <div class="wrapper-resize h400 w300">
         <div id="parent01" class="grid-3col-centered light-blue">
           <div>child 1</div>
@@ -135,10 +135,10 @@
           <div>child 6</div>
         </div>
         </div>
-        <div id="section-holder-code-tab-01" class="section-holder-code-tab w400">
+        <div id="section-holder-code-tab-01" class="section-holder-code-tab">
           <button class="section-tab">HTML</button>
           <button class="section-tab">CSS</button>
-          <div class="section-tab-content code" style="width:400px">
+          <div class="section-tab-content code">
             
           </div>
         </div>
@@ -205,7 +205,7 @@
         Goal: Parent DIV centers one child element.  Works with resizeable parent.
       </div>
       <div class="codebox">
-        <code class="section-meta-css">
+
   .super-centered { 
     display: grid;                         
     place-items:center;                    
@@ -216,11 +216,11 @@
      grid-template-columns: auto; 
      // applied by default 
   */     
-        </code>
+
       </div>
     </div>
     
-      <div class="section-example">
+      <div class="section-example-wide">
         <div class="wrapper-resize h300">
           <div id="parent02" class="super-centered light-blue">
             <div>child 1</div>
@@ -229,7 +229,7 @@
         <div id="section-holder-code-tab-02" class="section-holder-code-tab">
           <button class="section-tab">HTML</button>
           <button class="section-tab">CSS</button>
-          <div class="section-tab-content code w450 h400">
+          <div class="section-tab-content code">
             
           </div>
         </div>
@@ -291,7 +291,6 @@
       Goal: Configure child-elements to be responsive and automatically resize.
     </div>
     <div class="codebox">
-      <code class="section-meta-css">
 .flex-with-strechy-children {
   display:flex;
   flex-wrap: wrap;
@@ -304,11 +303,10 @@
   flex: 1 1 110px;   
   margin: 5px;
 }
-      </code>
     </div>
   </div>
   
-  <div class="section-example ">
+  <div class="section-example-wide">
     <div class="wrapper-resize h300">
       <div id="parent03" class="flex-with-strechy-children light-blue">
         <div >child 1</div>
@@ -319,7 +317,7 @@
     <div id="section-holder-code-tab-03" class="section-holder-code-tab">
       <button class="section-tab">HTML</button>
       <button class="section-tab">CSS</button>
-      <div class="section-tab-content code w450 h450">
+      <div class="section-tab-content code">
         
       </div>
     </div>
@@ -387,7 +385,7 @@ var text_css =`#parent03 {
       Goal: Configure child-elements to be responsive and automatically resize.
     </div>
     <div class="codebox">
-      <code class="section-meta-css">
+
 .flex-center-children {
   display:flex;
   flex-wrap: wrap;
@@ -408,11 +406,11 @@ var text_css =`#parent03 {
   display:grid; 
   place-items: center;
 }
-      </code>
+
     </div>
   </div>
   
-    <div class="section-example">
+    <div class="section-example-wide">
       <div class="wrapper-resize h300">
         <div id="parent04" class="flex-center-children light-blue">
           <div >child 1</div>
@@ -423,7 +421,7 @@ var text_css =`#parent03 {
       <div id="section-holder-code-tab-04" class="section-holder-code-tab">
         <button class="section-tab">HTML</button>
         <button class="section-tab">CSS</button>
-        <div class="section-tab-content code w450 h400">
+        <div class="section-tab-content code">
           
         </div>
       </div>
@@ -486,7 +484,7 @@ var text_css =`.flex-center-children {
     </div>
     <div>Further reading about grid &amp; repeat - <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/repeat">https://developer.mozilla.org/en-US/docs/Web/CSS/repeat</a></div>
     <div class="codebox">
-      <code class="section-meta-css">
+
 .grid-repeat {
   display: grid;
   grid-gap: 1rem;
@@ -511,11 +509,11 @@ var text_css =`.flex-center-children {
          to its flex factor (1fr).
      
   */
-</code>
+
     </div>
   </div>
   
-    <div class="section-example">
+    <div class="section-example-wide">
       <div class="wrapper-resize h300 light-blue">
         <div id="parent05" class="grid-repeat">
           <div >child 1</div>
@@ -527,7 +525,7 @@ var text_css =`.flex-center-children {
       <div id="section-holder-code-tab-05" class="section-holder-code-tab">
         <button class="section-tab">HTML</button>
         <button class="section-tab">CSS</button>
-        <div class="section-tab-content code w500 h400">
+        <div class="section-tab-content code">
           
         </div>
       </div>
@@ -594,7 +592,7 @@ var text_css =`#parent05 {
     </div>
     <div>Further reading about grid layouts - <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Basic_Concepts_of_Grid_Layout">https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Basic_Concepts_of_Grid_Layout</a></div>
     <div class="codebox">
-      <code class="section-meta-css">
+      
   .grid-container-panel {
     display: grid;
     grid-template-rows:    150px 1fr 157px;
@@ -665,7 +663,7 @@ var text_css =`#parent05 {
       span row-grid-line 3..4 (ie row 3) 
     */
   }
-      </code>
+   
     </div>
   </div>
   
@@ -697,7 +695,7 @@ var text_css =`#parent05 {
       <div id="section-holder-code-tab-06" class="section-holder-code-tab">
         <button class="section-tab">HTML</button>
         <button class="section-tab">CSS</button>
-        <div class="section-tab-content code w450 h800" >
+        <div class="section-tab-content code" >
           
         </div>
       </div>
@@ -794,7 +792,7 @@ var text_css =`.grid-container-panel {
     </div>
     <div>Further reading about grid &amp; repeat - <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Basic_Concepts_of_Grid_Layout#nesting_grids">https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Basic_Concepts_of_Grid_Layout#nesting_grids</a></div>
     <div class="codebox">
-      <code class="section-meta-css">
+
 .grid-container-of-tile {
   display:grid;
   grid-template-columns: repeat(auto-fit, 200px);
@@ -825,7 +823,7 @@ var text_css =`.grid-container-panel {
   display:grid;
   justify-content:center;
 }
-</code>
+
     </div>
   </div>
   
@@ -913,7 +911,7 @@ var text_css =`.grid-container-panel {
       <div id="section-holder-code-tab-07" class="section-holder-code-tab">
         <button class="section-tab">HTML</button>
         <button class="section-tab">CSS</button>
-        <div class="section-tab-content code w450 h800">
+        <div class="section-tab-content code">
           
         </div>
       </div>

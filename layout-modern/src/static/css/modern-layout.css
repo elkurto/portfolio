@@ -1,5 +1,5 @@
 :root {
-  --light-blue:#77aefe;
+  --light-blue:#307ced;
   --light-blue-border: #239fcc;
   --light-yellow:#deef99;
   --offwhite:#cddeef;
@@ -19,8 +19,10 @@ body {
   background-color: black;
   color:antiquewhite;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  
-  
+  width:800px;
+  font-size:24px;
+  margin-left:auto;
+  margin-right:auto;
 }
 
 a {
@@ -71,12 +73,10 @@ section {
 }
 .codebox  {
   border: 1px solid lightyellow;
-  width: 68em;
-}
-code {
-  white-space: pre;
-  color:lightyellow;
-  font-size: 14px;
+  width:100%;
+  white-space:pre;
+  font-size:20px;
+  font-family: monospace;
 }
 
 .section-example {
@@ -93,6 +93,12 @@ code {
   
 }
 
+.section-example-wide {
+  display:grid;
+  grid-template-rows: auto;
+  width:100%;
+}
+
 .wrapper-resize {
 
   resize:both;
@@ -107,7 +113,7 @@ code {
 .section-holder-code-tab {
   /*display:block;*/
   position:relative;
-  width:500px;
+  
   
   
 }
@@ -118,6 +124,10 @@ code {
   padding:0.5rem;
   z-index:1;
   background-color: grey;
+  height:50px;
+  width:150px;
+  margin-left: 40px;
+  
 }
 .section-tab.active {
   
@@ -134,10 +144,11 @@ code {
   margin-top:-1px;
   padding:5px;
   color: white;
+  
 }
 .section-tab-content.code {
   white-space: pre;
-  font: 1em monospace;
+  
 }
 
 
@@ -259,11 +270,7 @@ code {
 }
 
 /* 06 SECTION 06 */
-.section-example-wide {
-  display:grid;
-  grid-template-rows: auto;
-  width:700px;
-}
+
 .grid-container-panel {
   display: grid;
   grid-template-rows:    150px 1fr 157px;
