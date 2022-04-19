@@ -68,7 +68,7 @@ h3 a:hover {
 
 
 section {
-  margin-top:30px;
+  margin-top:50px;
   padding:20px;
 }
 .codebox  {
@@ -127,7 +127,8 @@ section {
   height:50px;
   width:150px;
   margin-left: 40px;
-  
+  font-size:24px;
+  font-weight:bold;
 }
 .section-tab.active {
   
