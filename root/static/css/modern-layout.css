@@ -341,7 +341,7 @@ a.textnormal {
   grid-template-columns: auto;
 
   width:150px;
-  height:200px;
+  height:auto;
   border:1px solid black;
   border-radius:5px;
   
