@@ -145,7 +145,10 @@ section {
   margin-top:-1px;
   padding:5px;
   color: white;
-  
+}
+.section-tab-content::selection {
+  background-color:navy;
+  color:#deef99;
 }
 .section-tab-content.code {
   white-space: pre;
